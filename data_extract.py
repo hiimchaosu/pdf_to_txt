@@ -13,16 +13,14 @@ def extract_data(source_file, output_file, keyword, keyword_amount = 0):
             # Just small iteration for index
             keyword_amount = keyword_amount + 1
             # Extract the amount from the line above the keyword line
-            keyword_line = lines[i - 1].strip()
-            keyword_line2 = lines[i].strip()
+            keyword_line = lines[i].strip()
+            keyword_line2 = lines[i + 43].strip()
             with open(output_file, 'a', encoding='utf-8') as out_file:
-                if "SKADEN" in keyword_line:
-                    keyword_line = lines[i - 4].strip()
-                    out_file.write(keyword_line + "\n" + str(keyword_amount) + "." + keyword_line2 + "\n")
+                if "-,---" in keyword_line2:
+                    keyword_line2 = lines[i + 46].strip()
+                    out_file.write(keyword_line + "\n" + str(keyword_amount) + ". " + keyword_line2 + "\n")
                 elif len(lines) > 0:
-                    out_file.write(keyword_line + "\n" + str(keyword_amount) + "." + keyword_line2 + "\n")
+                    out_file.write(keyword_line + "\n" + str(keyword_amount) + ". " + keyword_line2 + "\n")
                 else:
                     print("No data to write.")
-    with open(output_file, 'a', encoding='utf-8') as out_file:
-        out_file.write(lines[-4])
     print(f"Data has been written to {output_file}")

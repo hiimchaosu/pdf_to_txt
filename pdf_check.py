@@ -4,6 +4,7 @@ def check_pdf_existence(file_path):
     try:
         file = pymupdf.open(file_path)
         file.close()
+        print(f"The PDF file has been accessed, so it exists.")
         return True
 
     except FileNotFoundError:

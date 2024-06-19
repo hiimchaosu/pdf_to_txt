@@ -1,3 +1,5 @@
+# Data extraction that is currently used in my specific .pdf files, if You want, feel free to modify however You may see fit
+
 def extract_data(source_file, output_file, keyword, keyword_amount = 0):
     with open(source_file, 'r', encoding='utf-8') as src_file:
         lines = src_file.readlines()
